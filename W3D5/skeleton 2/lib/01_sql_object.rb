@@ -40,19 +40,48 @@ class SQLObject
   end
 
   def self.all
-    # ...
+    results = DBConnection.execute(<<-SQL)
+      SELECT
+        *
+      FROM
+        #{table_name}
+
+    SQL
+
+    parse_all(results)
   end
 
   def self.parse_all(results)
-    # ...
+    final = []
+    results.each do |hash|
+      final << self.new(hash)
+    end
+    final
   end
 
   def self.find(id)
-    # ...
+    results = DBConnection.execute(<<-SQL, id)
+      SELECT
+        *
+      FROM
+        #{table_name}
+      WHERE
+        #{table_name}.id = ?
+    SQL
+
+    parse_all(results).first
   end
 
   def initialize(params = {})
-    # ...
+    params.each do |attr_name, value|
+      attr_name = attr_name.to_sym
+      if self.class.columns.include?(attr_name)
+        # is doing self.attr_name =value
+        self.send("#{attr_name}=", value)
+      else
+        raise "unknown attribute '#{attr_name}'"
+      end
+    end
   end
 
   def attributes
@@ -60,11 +89,24 @@ class SQLObject
   end
 
   def attribute_values
-    # ...
+    @attributes.values
   end
 
   def insert
-    # ...
+    # drop 1 to avoid inserting id (the first column)
+    columns = self.class.columns.drop(1)
+    col_names = columns.map(&:to_s).join(", ")
+    question_marks = (["?"] * columns.count).join(", ")
+
+    DBConnection.execute(<<-SQL, *attribute_values.drop(1))
+      INSERT INTO
+        #{self.class.table_name} (#{col_names})
+      VALUES
+        (#{question_marks})
+    SQL
+
+    self.id = DBConnection.last_insert_row_id
+
   end
 
   def update
