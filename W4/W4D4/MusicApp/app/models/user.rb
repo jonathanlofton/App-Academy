@@ -17,7 +17,7 @@ class User < ApplicationRecord
   # we want to ensure the session token is present before
   # validation so directly after initialization we will
   # create a session token for the user
-
+  validates :email, presence: true, uniqueness: true
   after_initialize :ensure_session_token
 
 
@@ -32,7 +32,7 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  def self.ensure_session_token
+  def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
 
@@ -41,7 +41,7 @@ class User < ApplicationRecord
     @password = password
     # hashes and salts the password and saves it under the
     # users password_digest
-    self.password_digest = BCrypt::Password.create(password)
+    self.password_digest = BCrypt::Password.create(password).to_s
   end
 
   def is_password?(password)

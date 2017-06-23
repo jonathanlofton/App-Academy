@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <% if current_user %>
+       <h2>Current User: <%= current_user.email %> </h2>
+      <%= button_to "Logout", session_url, method: :delete %>
+    <% else  %>
+      <%= button_to "Login", new_session_url, method: :get %>
+      <%= button_to "Create Account", new_user_url, method: :get %>
+    <% end  %>
+
+
     <%= yield %>
   </body>
 </html>
