@@ -4,4 +4,6 @@ Links::Application.routes.draw do
   resources :links
   resources :comments
   resource :session
+
+
 end

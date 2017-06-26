@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
-  validates :body, :link, :user, presence: true
+  validates :body, :user, :link, presence: true
 
   belongs_to :user
   belongs_to :link
+
 end

@@ -11,34 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623035016) do
+ActiveRecord::Schema.define(version: 20170626054551) do
 
   create_table "comments", force: :cascade do |t|
-    t.text     "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "link_id",    null: false
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "link_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "comments", ["link_id"], name: "index_comments_on_link_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "links", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.string   "url",        null: false
+    t.string   "title"
+    t.string   "url"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
-  add_index "links", ["url"], name: "index_links_on_url", unique: true
-  add_index "links", ["user_id"], name: "index_links_on_user_id"
-
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
+    t.string   "username"
+    t.string   "password_digest"
+    t.string   "session_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
