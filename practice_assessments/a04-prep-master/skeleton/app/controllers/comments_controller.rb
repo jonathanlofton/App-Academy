@@ -2,8 +2,6 @@ class CommentsController < ApplicationController
 
   before_action :require_logged_in!
 
-
-
   def new
   end
 
@@ -24,6 +22,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body, :link_id)
   end
-
 
 end

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
-  validates :password, length: {minimum: 6, allow_nil: true}
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
@@ -8,12 +8,6 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :links
-
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
-    return nil unless user && user.is_password?(password)
-    user
-  end
 
   def password=(password)
     @password = password
@@ -37,5 +31,12 @@ class User < ActiveRecord::Base
     self.save!
     self.session_token
   end
+
+  def self.find_by_credentials(username, password)
+    user = User.find_by(username: username)
+    return nil unless user && user.is_password?(password)
+    user
+  end
+
 
 end

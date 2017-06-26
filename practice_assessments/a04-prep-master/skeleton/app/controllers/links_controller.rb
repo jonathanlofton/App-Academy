@@ -2,6 +2,7 @@ class LinksController < ApplicationController
 
   before_action :require_logged_in!
 
+
   def new
     @link = Link.new
   end
@@ -24,6 +25,7 @@ class LinksController < ApplicationController
       flash.now[:errors] = @link.errors.full_messages
       render :new
     end
+
   end
 
   def edit
@@ -39,14 +41,14 @@ class LinksController < ApplicationController
     else
       flash[:errors] = @link.errors.full_messages
       redirect_to link_url(@link)
-      # flash[:errors] = @Link.errors.full_messages
-      # redirect_to link_url(@link)
     end
+
 
   end
 
   def link_params
     params.require(:link).permit(:title, :url)
   end
+
 
 end

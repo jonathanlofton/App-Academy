@@ -10,14 +10,17 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to links_url
     else
-      flash.now[:errors] = ["new"]
+      flash.now[:errors] = ["ERROR"]
       render :new
     end
   end
+
+
 
   def destroy
     logout!
     redirect_to new_session_url
   end
+
 
 end
