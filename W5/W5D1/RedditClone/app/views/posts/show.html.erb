@@ -1,0 +1,10 @@
+<h1>Post: <%= @post.title %>  </h1>
+<h3>content:<%= @post.content %> </h2>
+<h4>link:<%= link_to @post.url, @post.url %> </h3>
+<h4> birthed by:<%= @post.user.username %> </h4>
+
+<%= button_to "Remove Post", post_url(@post), method: :delete %>
+
+<%= link_to "Edit Post", edit_post_url(@post) %>
+
+<%= link_to "Create Comment", new_post_comment_url(@post.id) %>
