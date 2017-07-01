@@ -1,4 +1,4 @@
-import_from 'lodash';
+import _ from 'lodash';
 
 function component() {
   var element = document.createElement('div');
