@@ -1,25 +1,37 @@
 .main-nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $light-gray;
+	font-family: $sans-serif;
+  padding: 5px;
 
 }
 
 .left-nav > ul,
 .right-nav > ul {
-
+  display: flex;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .left-nav > ul > li {
-
+  align-items: flex-start;
+  font-size: 12px;
+  padding: 10px;
 }
 
 .right-nav > ul > li {
-
+  align-items: flex-end;
+  padding: 3px;
 }
 
 .right-nav > ul > li:last-of-type {
 
 }
 
-.left-nav > ul > li:hover,
+.left-nav > ul > li:hover {
+  background-color: $lightest-gray;
+}
 .right-nav > ul > li:last-of-type:hover {
 
 }

@@ -6,26 +6,36 @@ html {
 }
 
 body {
-	// ...
+	width: 80%;
+	margin: 0 auto;
+	font-family: $serif;
+	font-size: 12px;
 }
 
 button {
-	// background-color:
-	// border-color:
-	// color:
+	background-color: $light-blue;
+	border-color: $dark-blue;
+	color: white;
 	// font-weight:
-	// padding:
-	// border-radius:
+	border-radius: 2px;
+	padding: 5px;
 	// transition:
-	// font-family:
-	// text-transform:
+	font-family: $sans-serif;
+	text-transform: uppercase;
 	// font-size:
 	// text-align:
 }
 
+.button--cog {
+	background-color: $lightest-gray;
+	color: black;
+	padding: 5px;
+	font-size: 14px;
+}
+
 button:hover {
-	// background-color:
-	// border-color:
+	background-color: $dark-blue;
+	border-color:	$darkest-blue;
 }
 
 /*
