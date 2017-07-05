@@ -10,12 +10,11 @@
 Function.prototype.curry = function (numArgs) {
   // need to save the function like this for scope reasons
   const fn = this;
-  const basicargs = [];
-
-  function _curry (arg) {
-    basicargs.push(arg)
-    if (basicargs.length === numArgs) {
-      return fn(...basicargs);
+  const args = [];
+  function _curry (newArgs) {
+    args.push(newArgs);
+    if (args.length === numArgs) {
+      return fn.apply(null, args);
     } else {
       return _curry;
     }
@@ -31,23 +30,11 @@ console.log(cur); // 30
 
 
 // using apply
-Function.prototype.curry1 = function(numArgs){
-  const fn = this;
-  const basicargs = [];
-
-  function _curry (args) {
-    basicargs.push(args)
-    if (basicargs.length === numArgs) {
-      return fn.apply(null, basicargs);
-    } else {
-      return _curry;
-    }
-  }
-
-  return _curry;
-}
+// Function.prototype.curry2 = function(numArgs){
+//
+// }
 function sumThree2(num1, num2, num3) {
   return num1 + num2 + num3;
 }
-let cur1 = sumThree2.curry1(3)(4)(20)(6);
+let cur1 = sumThree2.curry(3)(4)(20)(6);
 console.log(cur1); // 30

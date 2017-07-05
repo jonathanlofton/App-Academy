@@ -30,14 +30,11 @@ Function.prototype.myBind1 = function (ctx) {
 
 
 Function.prototype.myBind2 = function (ctx, ...bindArgs) {
-  // fat arrow allows shit to persist in scope, why?
-  // and how far?
-  // user callArgs so if other arguments are added
-  // they are put into call args
-  // markov.says.myBind2(breakfast, "meow")("Markov");
-  return (...callArgs) => {
-    return this.apply(ctx, bindArgs.concat(callArgs));
-  };
+  let object = ctx;
+  let fn = this;
+  return function (...newArgs) {
+    return fn.apply(ctx, bindArgs.concat(newArgs))
+  }
 };
 
 

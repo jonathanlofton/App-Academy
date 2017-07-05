@@ -6,10 +6,9 @@ Array.prototype.myInject = function (cb) {
   // pop off the first el as accum
   let accum = this.shift();
 
-
-  this.forEach (function(el) {
-    accum = cb(accum, el);
-  })
+  for (var i = 0; i < this.length; i++) {
+    accum += cb(accum, this[i])
+  }
 
   return accum;
 };

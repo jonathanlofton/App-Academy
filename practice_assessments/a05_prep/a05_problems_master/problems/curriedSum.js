@@ -5,25 +5,17 @@
 function curriedSum(numArgs) {
   const numbers = [];
 
-  // dont use ... because all of the args are separated?
-  // like ()()()() instead of like arg1, arg2, etc...
-  function _curry (args) {
-    numbers.push(args)
+  function _curriedSum(newArgs) {
+    numbers.push(newArgs);
     if (numbers.length === numArgs) {
-      let sum = 0;
-      for (var i = 0; i < numArgs; i++) {
-        sum += numbers[i];
-      }
-      return sum;
+      let total = 0;
+      numbers.forEach((num)=>{total += num;})
+      return total;
+    } else {
+      return _curriedSum;
     }
-    // keep calling _curry to grab the next arg until it has
-    // the amount that is wanted to perform the function
-    return _curry;
   }
-
-  // this is to actually call the function?
-  // how else would it know to perform this function?
-  return _curry;
+  return _curriedSum;
 }
 
 

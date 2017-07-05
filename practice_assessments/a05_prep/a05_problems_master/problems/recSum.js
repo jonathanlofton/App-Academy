@@ -1,6 +1,10 @@
 //Write a recursive method that returns the sum of all elements in an array
 const recSum = (nums) => {
-  return 
+  if (nums.length < 1) {
+    return 0;
+  }
+
+  return recSum(nums.slice(1)) + nums[0];
 };
 
 console.log(recSum([5,45,7]));

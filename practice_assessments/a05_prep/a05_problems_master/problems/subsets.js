@@ -1,14 +1,15 @@
 const subSets = (arr) => {
-  if (arr.length == 0) {
+  if (arr.length === 0) {
     return [[]];
   }
 
   const first = arr[0];
-  const subs = subSets(arr.slice(1));
+  const subset = subSets(arr.slice(1))
 
-  const newSubs = subs.map(sub => [first].concat(sub));
+  const newSubs = subset.map((sub) => {[first].concat(sub)})
 
-  return subs.concat(newSubs);
+  return subset.concat(newSubs);
+
 };
 
 console.log(subSets([1,2,3]));
