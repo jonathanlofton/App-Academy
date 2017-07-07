@@ -3,7 +3,7 @@
 
 
 Array.prototype.mergeSort = function (comparator) {
-  comparator = comparator || function (a, b) {
+  comparator = comparator || function(a, b) {
     if (a < b) {
       return -1;
     } else if (b < a) {
@@ -16,30 +16,29 @@ Array.prototype.mergeSort = function (comparator) {
   if (this.length < 2) {
     return this;
   }
+
   let mid = Math.floor(this.length / 2);
-  let left = this.slice(0, mid);
-  let right = this.slice(mid);
+  let left = this.slice(0, mid).mergeSort(comparator);
+  let right = this.slice(mid).mergeSort(comparator);
 
-  let mergedLeft = left.mergeSort(comparator);
-  let mergedRight = right.mergeSort(comparator);
-
-  return merge(mergedLeft, mergedRight, comparator);
+  return merge(left, right, comparator);
 };
 
 function merge(left, right, comparator) {
-  let sorted = [];
+  let merged = [];
 
-
-  while ( left.length > 0 && right.length > 0) {
-    if (left[0] < right[0]) {
-      sorted.push(left.shift());
+  while (left.length > 0 && right.length > 0) {
+    if (comparator(left[0], right[0]) === -1) {
+      merged.push(left.shift())
     } else {
-      sorted.push(right.shift());
+      merged.push(right.shift())
     }
   }
 
-  return sorted.concat(left, right);
+  return merged.concat(left, right);
 }
+
+
 
 
 const compA = (b, a) => {
@@ -52,5 +51,6 @@ const compA = (b, a) => {
  }
 };
 
-console.log([1,9,2,3,0,5,6,43,24].mergeSort(compA)); // ONE WITH COMPARATOR
+console.log([1,9,2,3,0,5,6,43,24].mergeSort(compA));
+console.log([1,9,2,3,0,5,6,43,24].mergeSort()); // ONE WITH COMPARATOR
 // console.log([1,9,2,3,0,5,6,43,24].mergeSort()); // ONE WITHOUT

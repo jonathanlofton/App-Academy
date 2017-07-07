@@ -10,11 +10,11 @@
 Function.prototype.curry = function (numArgs) {
   // need to save the function like this for scope reasons
   const fn = this;
-  const args = [];
-  function _curry(newarg) {
-    args.push(newarg)
-    if (args.length === numArgs) {
-      return fn(...args);
+  const array = [];
+  function _curry (newArgs) {
+    array.push(newArgs);
+    if (array.length === numArgs) {
+      return fn(...array);
     } else {
       return _curry;
     }

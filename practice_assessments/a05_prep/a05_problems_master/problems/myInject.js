@@ -7,10 +7,10 @@ Array.prototype.myInject = function (cb) {
   let accum = this.shift();
 
   for (var i = 0; i < this.length; i++) {
-    accum += cb(accum, this[i])
+    accum = cb(accum, this[i]);
   }
 
-  return accum;
+  return fibSum(n - 1) + fibSum(n - 2) + 1;
 };
 
 

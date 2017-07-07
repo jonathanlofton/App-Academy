@@ -8,7 +8,13 @@
 
 
 const digitalRoot = (num) => {
-
+while (num >= 10) {
+  // divide
+  const ones = num % 10;
+  const remainder = num - ones;
+  num = ones + digitalRoot(remainder / 10);
+}
+return num;
 };
 
 

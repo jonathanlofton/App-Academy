@@ -2,8 +2,23 @@
 // Do not capitalize words like 'a', 'and', 'of', 'over' or 'the'
 
 const titleize = (title) => {
+  const dont = ['a', 'and', 'of', 'over', 'the']
 
-
+  let words = title.split(" ");
+  let book = [];
+  for (var i = 0; i < words.length; i++) {
+    if (i === 0) {
+      let newWord = words[i][0].toUpperCase() + words[i].slice(1)
+      book.push(newWord);
+    }
+    else if (dont.includes(words[i])) {
+      book.push(words[i]);
+    } else {
+      newWord = words[i][0].toUpperCase() + words[i].slice(1)
+      book.push(newWord);
+    }
+  }
+  return book.join(" ");
 };
 
 

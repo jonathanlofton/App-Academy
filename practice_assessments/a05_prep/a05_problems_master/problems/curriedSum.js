@@ -5,11 +5,11 @@
 function curriedSum(numArgs) {
   const numbers = [];
 
-  function _curriedSum(newArgs) {
+  function _curriedSum (newArgs) {
     numbers.push(newArgs);
     if (numbers.length === numArgs) {
       let total = 0;
-      numbers.forEach((num)=>{total += num;})
+      numbers.forEach((num) => { total += num ;})
       return total;
     } else {
       return _curriedSum;

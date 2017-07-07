@@ -4,12 +4,11 @@ const subSets = (arr) => {
   }
 
   const first = arr[0];
-  const subset = subSets(arr.slice(1))
+  const newsub = subSets(arr.slice(1));
 
-  const newSubs = subset.map((sub) => {[first].concat(sub)})
+  const gucci = newsub.map(sub =>  [first].concat(sub))
 
-  return subset.concat(newSubs);
-
+  return newsub.concat(gucci);
 };
 
 console.log(subSets([1,2,3]));

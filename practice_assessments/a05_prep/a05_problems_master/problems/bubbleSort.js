@@ -1,29 +1,27 @@
 Array.prototype.bubbleSort = function(compare) {
-  if (compare === undefined) {
-    function compare(a, b) {
-      if (a < b) {
-        return -1;
-      } else if (b < a) {
-        return 1;
-      } else {
-        return 0;
-      }
+  compare = compare || function(a, b) {
+    if (a < b) {
+      return -1;
+    } else if (b < a) {
+      return 1;
+    } else {
+      return 0;
     }
   }
-
   let sorted = false;
-
-  while (sorted === false) {
+  while (!sorted) {
     sorted = true;
+
     for (var i = 0; i < this.length; i++) {
-
-
       if (compare(this[i], this[i + 1]) === 1) {
-        [this[i], this[i + 1]] = [this[i + 1], this[i]]
-        sorted = false
+        [this[i], this[i + 1]] = [this[i + 1], this[i]];
+        sorted = false;
       }
     }
+
+
   }
+
   return this;
 };
 

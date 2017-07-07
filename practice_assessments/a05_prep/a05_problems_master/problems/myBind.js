@@ -16,9 +16,11 @@
   //2. fat arrow ALLOWS the shit to persist. (so no 'fn')
 
 // pt 1 is the ANTI fat arrow method;
-Function.prototype.myBind1 = function (ctx, ...bindArgs) {
-  return (...callArgs) => {
-    this.apply(ctx, bindArgs.concat(callArgs))
+Function.prototype.myBind1 = function(ctx,...bindArgs) {
+  let object = ctx;
+  let fn = this;
+  return function (...newArgs) {
+    return fn.apply(ctx, bindArgs.concat(newArgs))
   }
 }
 

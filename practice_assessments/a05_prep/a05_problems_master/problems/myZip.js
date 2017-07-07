@@ -1,5 +1,15 @@
 Array.prototype.myZip = function (...arrays) {
-
+  let result = [];
+  for (let i = 0; i < arrays.length; i++) {
+    for (let j = 0; j < arrays.length; j++) {
+      if (arrays[i][j] === undefined) {
+        result.push(undefined);
+      } else {
+        result.push(newArray[i][j]);
+      }
+    }
+  }
+  return result;
 };
 
 
