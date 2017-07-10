@@ -38,7 +38,7 @@ export default class Clock extends React.Component {
     let month = this.state.time.getMonth();
     let year = this.state.time.getFullYear();
 
-    let date = `${day}/${month}/${year}`
+    let date = `${day}/${month + 1}/${year}`
 
     return (
       <div>

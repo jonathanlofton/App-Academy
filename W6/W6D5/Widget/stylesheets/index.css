@@ -7,20 +7,3 @@ body, h1, h2, ul, li, p {
   font-family: inherit;
   background: transparent;
 }
-
-body {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 400;
-}
-
-.clock {
-  background-color: lightgreen;
-  width: 500px;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: white;
-}
