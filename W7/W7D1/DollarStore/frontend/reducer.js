@@ -9,8 +9,8 @@ const reducer = (state = initialState, action) => {
   switch(action.type) {
     case "SWITCH_CURRENCY":
      return {
-       action.baseCurrency();
-       action.rates();
+        baseCurrency: action.baseCurrency,
+        rates: action.rates
      }
     default:
       return state;
@@ -19,3 +19,5 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+window.reducer = reducer;

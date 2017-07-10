@@ -9883,8 +9883,6 @@ var Widget = function (_React$Component) {
   return Widget;
 }(_react2.default.Component);
 
-;
-
 exports.default = Widget;
 
 /***/ }),
@@ -9930,7 +9928,9 @@ module.exports = __webpack_require__(118);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var selectCurrency = exports.selectCurrency = function selectCurrency(baseCurrency, rates) {
+
+
+var selectCurrency = function selectCurrency(baseCurrency, rates) {
   return {
     type: "SWITCH_CURRENCY",
     baseCurrency: baseCurrency,
@@ -9938,7 +9938,7 @@ var selectCurrency = exports.selectCurrency = function selectCurrency(baseCurren
   };
 };
 
-window.selectCurrency = selectCurrency;
+exports.default = selectCurrency;
 
 /***/ }),
 /* 86 */
@@ -10000,11 +10000,7 @@ var _store = __webpack_require__(83);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _actions = __webpack_require__(85);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.store = _store2.default;
 
 document.addEventListener("DOMContentLoaded", function () {
   _reactDom2.default.render(_react2.default.createElement(_widget2.default, { store: _store2.default }), document.getElementById('root'));
@@ -23677,10 +23673,41 @@ module.exports = function(module) {
 
 /***/ }),
 /* 210 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (12:13)\n\n\u001b[0m \u001b[90m 10 | \u001b[39m    \u001b[36mcase\u001b[39m \u001b[32m\"SWITCH_CURRENCY\"\u001b[39m\u001b[33m:\u001b[39m\n \u001b[90m 11 | \u001b[39m     \u001b[36mreturn\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 | \u001b[39m       action\u001b[33m.\u001b[39mbaseCurrency()\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 | \u001b[39m       action\u001b[33m.\u001b[39mrates()\u001b[33m;\u001b[39m\n \u001b[90m 14 | \u001b[39m     }\n \u001b[90m 15 | \u001b[39m    \u001b[36mdefault\u001b[39m\u001b[33m:\u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var initialState = {
+  baseCurrency: "Please select",
+  rates: {}
+};
+
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "SWITCH_CURRENCY":
+      return {
+        baseCurrency: action.baseCurrency,
+        rates: action.rates
+      };
+    default:
+      return state;
+  }
+  // remove this and fill out the body of the reducer function
+};
+
+exports.default = reducer;
+
+
+window.reducer = reducer;
 
 /***/ })
 /******/ ]);
