@@ -12088,6 +12088,8 @@ var _violet2 = _interopRequireDefault(_violet);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -12115,22 +12117,37 @@ var Rainbow = function (_React$Component) {
           'Rainbow Router!'
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/red' },
+          _reactRouterDom.NavLink,
+          _defineProperty({ to: '/red', exact: true }, 'to', '/red'),
           'Red'
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
+          _reactRouterDom.NavLink,
+          { to: '/red/orange' },
+          'Orange'
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: '/red/yellow' },
+          'Yellow'
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
           { to: '/green' },
           'Green'
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/blue' },
+          _reactRouterDom.NavLink,
+          _defineProperty({ to: '/blue', exact: true }, 'to', '/blue'),
           'Blue'
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
+          _reactRouterDom.NavLink,
+          { to: '/blue/indigo' },
+          'Add indigo'
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
           { to: '/violet' },
           'Violet'
         ),
