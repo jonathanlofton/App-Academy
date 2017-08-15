@@ -2,12 +2,12 @@
   "name": "BenchBnB",
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "webpack": "webpack",
+    "webpack": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,11 +18,15 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "webpack": "^3.2.0"
   }
 }
