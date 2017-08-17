@@ -61,14 +61,15 @@ class HashMap
   end
 
   def resize!
-    @num_buckets *= 2
-    new_store = Array.new(@num_buckets) { LinkedList.new }
-    @store.each do |list|
+    old_store = @store
+    @store = Array.new(num_buckets * 2) { LinkedList.new }
+    @count = 0
+
+    old_store.each do |list|
       list.each do |node|
-        new_store[node.key.hash % num_buckets].append(node.key, node.val)
+        set(node.key, node.val)
       end
     end
-    @store = new_store
   end
 
   def bucket(key)
