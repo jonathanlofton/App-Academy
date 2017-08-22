@@ -7,8 +7,12 @@
 
 # Import any files you need to
 
-
+require_relative 'graph'
+require_relative 'topological_sort'
 
 def install_order(arr)
-
+  hash = Hash.new()
+  arr.each do |tuple|
+    hash[tuple[1]] = tuple[0]
+  end 
 end
