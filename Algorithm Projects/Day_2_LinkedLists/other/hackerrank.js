@@ -33,3 +33,22 @@ function mergeLinkedLists( headA, headB) {
     }
     return headC.next.next;
 }
+
+// get node value from with the position being the index from the tail
+function getNodeValue( head, position) {
+    let current_node = head;
+
+    let arrayOfData = [];
+    while (current_node) {
+        arrayOfData.push(current_node.data)
+        current_node = current_node.next;
+    }
+
+    let count = 0;
+    for (let i = arrayOfData.length - 1; i >= 0; i--) {
+        if (count == position) {
+            return arrayOfData[i];
+        }
+        count += 1;
+    }
+}
