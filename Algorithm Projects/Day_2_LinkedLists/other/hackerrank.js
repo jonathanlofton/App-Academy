@@ -87,3 +87,24 @@ function hasCycle(head) {
     }
     return false;
 }
+
+// find where two linkedlists merge
+function findMergeNode(headA, headB) {
+    listA = headA;
+    listB = headB;
+
+    while (listA !== listB) {
+        if (listA.next == null) {
+            listA = headB;
+        } else {
+            listA = listA.next;
+        }
+        if (listB.next == null) {
+            listB = headA;
+        } else {
+            listB = listB.next;
+        }
+    }
+
+    return listB.data;
+}
