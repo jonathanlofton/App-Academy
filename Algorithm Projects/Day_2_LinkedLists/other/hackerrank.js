@@ -52,3 +52,23 @@ function getNodeValue( head, position) {
         count += 1;
     }
 }
+
+// remove duplicates from a linked list
+function removeDuplicates(head) {
+    let repeats = [];
+    let currentNode = head;
+    let previousNode = null;
+    while (currentNode) {
+        if (repeats.includes(currentNode.data)) {
+            if (currentNode.next && repeats.includes(currentNode.next.data) === false) {
+                previousNode.next = currentNode.next;
+            } else {
+                previousNode.next = null;
+            }
+        }
+        repeats.push(currentNode.data)
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+    }
+    return head;
+}
