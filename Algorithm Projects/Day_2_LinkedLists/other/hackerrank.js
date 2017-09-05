@@ -72,3 +72,18 @@ function removeDuplicates(head) {
     }
     return head;
 }
+
+// return true if there is a cycle in the linkedlist or false if there isn't
+function hasCycle(head) {
+    let currentNode = head;
+
+    let repeats = [];
+    while (currentNode) {
+        if (repeats.includes(currentNode.data)) {
+            return true
+        }
+        repeats.push(currentNode.data)
+        currentNode = currentNode.next;
+    }
+    return false;
+}
