@@ -5,5 +5,5 @@ def find_second_minimum_value(root, array = [])
     array.push(root.val)
     find_second_minimum_value(root.right, array)
 
-    array[-2]
+    array[1]
 end
