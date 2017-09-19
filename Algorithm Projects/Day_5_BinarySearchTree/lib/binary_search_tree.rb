@@ -23,20 +23,43 @@ class BinarySearchTree
   end
 
   def delete(value)
-    BinarySearchTree.find!(value)
+    @root = delete_from_tree(@root, value)
   end
 
   # helper method for #delete:
   def maximum(tree_node = @root)
+    if tree_node.right 
+      maximum_node = maximum(tree_node.right)
+    else 
+      maximum_node = tree_node
+    end 
+    maximum_node
   end
 
   def depth(tree_node = @root)
+    return 0 if tree_node == nil 
+
   end
 
   def is_balanced?(tree_node = @root)
+    return if tree_node == nil 
+
+    return false if tree_node.left != nil && tree_node.right == nil 
+    return false if tree_node.right != nil && tree_node.left == nil
+    is_balanced?(tree_node.left)
+    is_balanced?(tree_node.right)
+
+    true 
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
+    return if tree_node == nil 
+
+    in_order_traversal(tree_node.left, arr)
+    arr << tree_node.value 
+    in_order_traversal(tree_node.right, arr)
+
+    arr
   end
 
 
