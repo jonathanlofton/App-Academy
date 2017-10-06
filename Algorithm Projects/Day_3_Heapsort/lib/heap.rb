@@ -11,6 +11,16 @@ class BinaryMinHeap
   end
 
   def extract
+    val = @store[0]
+
+    if count < 1 
+      @store.pop
+    else 
+      @store[0] = @store.pop
+      self.class.heapify_down(@store, 0, count, &prc)
+    end 
+
+    val
   end
 
   def peek
