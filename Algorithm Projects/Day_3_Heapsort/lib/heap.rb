@@ -14,9 +14,12 @@ class BinaryMinHeap
   end
 
   def peek
+    @store.first
   end
 
   def push(val)
+    @store.push(val)
+    self.class.heapify_up(@store, @store.length - 1, count, &prc)
   end
 
   public
